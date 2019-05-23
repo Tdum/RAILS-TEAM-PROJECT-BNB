@@ -15,6 +15,9 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 
+# image hosting
+gem 'cloudinary', '~> 1.9.1'
+
 # authentification
 gem 'devise'
 
