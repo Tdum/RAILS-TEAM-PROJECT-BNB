@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2019_05_24_131849) do
+ActiveRecord::Schema.define(version: 2019_05_24_155335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,12 +32,12 @@ ActiveRecord::Schema.define(version: 2019_05_24_131849) do
     t.string "party_type"
     t.string "name"
     t.text "description"
-    t.string "photo"
     t.integer "guest_capacity"
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.json "photos"
     t.index ["user_id"], name: "index_places_on_user_id"
   end
 
