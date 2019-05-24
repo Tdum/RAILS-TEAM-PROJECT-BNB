@@ -5,3 +5,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
+
+
+puts "Destroying existing users..."
+
+User.destroy_all
+
+100.times do
+
+User.new(
+  first_name: Faker::Name.name.first_name,
+  last_name: Faker::Name.name.last_name,
+  email: Faker::Internet.email,
+  encrypted_password:
+
+
+  )
+
+end
+

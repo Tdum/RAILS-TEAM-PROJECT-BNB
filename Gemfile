@@ -27,6 +27,8 @@ gem 'pundit'
 
 # seed
 gem 'faker'
+gem 'unsplash'
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
