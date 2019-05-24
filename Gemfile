@@ -25,6 +25,9 @@ gem 'devise'
 # admin
 gem 'pundit'
 
+# seed
+gem 'faker'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
