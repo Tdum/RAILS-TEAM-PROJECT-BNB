@@ -7,22 +7,35 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+require 'unsplash'
+
+# puts "How many users would you like to create ?"
+# user_number = gets.chomp
+# puts "How many places would you like to create ?"
+# place_number = gets.chomp.to_i
+# puts "How many bookings would you like to create ?"
+# booking_number = gets.chomp.to_i
+
 
 
 puts "Destroying existing users..."
 
 User.destroy_all
 
-100.times do
+queries = ['face', 'kissing', 'sport', 'portrait']
 
-User.new(
-  first_name: Faker::Name.name.first_name,
-  last_name: Faker::Name.name.last_name,
-  email: Faker::Internet.email,
-  encrypted_password:
-
-
-  )
-
+queries.each do |query|
+  Unsplash::Photo.search(query).each do |picture|
+    User.create(
+      first_name: Faker::Name.name,
+      last_name: Faker::Name.name,
+      email: Faker::Internet.email,
+      description: Faker::Hipster.paragraphs,
+      password: 'password',
+      # remote_....._url allow to upload on cloudinary
+      remote_photo_url: picture[:urls][:small] # search in Unsplash object urls of small picture
+      )
+    sleep(0.5)
+    puts "Create one user called #{User.last.first_name}"
+  end
 end
-
