@@ -22,20 +22,19 @@ puts "Destroying existing users..."
 
 User.destroy_all
 
-queries = ['face', 'kissing', 'sport', 'portrait']
 
-queries.each do |query|
-  Unsplash::Photo.search(query).each do |picture|
-    User.create(
-      first_name: Faker::Name.name,
-      last_name: Faker::Name.name,
-      email: Faker::Internet.email,
-      description: Faker::Hipster.paragraphs,
-      password: 'password',
-      # remote_....._url allow to upload on cloudinary
-      remote_photo_url: picture[:urls][:small] # search in Unsplash object urls of small picture
-      )
-    sleep(0.5)
-    puts "Create one user called #{User.last.first_name}"
-  end
+
+Unsplash::Photo.search('portrait', page = 1, per_page = 30).each do |picture|
+  User.create(
+    first_name: Faker::Name.name,
+    last_name: Faker::Name.name,
+    email: Faker::Internet.email,
+    description: Faker::Hipster.paragraphs,
+    password: 'password',
+    # remote_....._url allow to upload on cloudinary
+    remote_photo_url: picture[:urls][:small] # search in Unsplash object urls of small picture
+    )
+  sleep(0.5)
+  puts "Create one user called #{User.last.first_name}"
 end
+
