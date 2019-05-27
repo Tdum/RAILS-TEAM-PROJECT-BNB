@@ -1,1 +1,21 @@
-<h1>places index</h1>
+<div class="container">
+  <h2 class="mb-3">App Hero's Around Paris</h2>
+    <div class="row">
+    <% @places.each do |place| %>
+      <div class="col-md-4">
+        <div class="card-place">
+        <!-- <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"> -->
+          <%= link_to place_path(place) do %>
+            <%= cl_image_tag(place.photo, height: 175, crop: :fill, class: "card-img") %>
+          <% end %>
+          <div class="card-place-infos">
+            <h5><%= place.name %></h5>
+          </div>
+          <h3 class>$ <%= place.price %></h3>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>
+
