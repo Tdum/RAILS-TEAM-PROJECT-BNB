@@ -18,13 +18,17 @@ require 'unsplash'
 
 
 
-puts "Destroying existing users..."
+puts "Destroying existing users, places & bookings..."
 
 User.destroy_all
+Place.destroy_all
+Booking.destroy_all
+puts "***********************************************************************"
+puts "Let's create users"
+puts "***********************************************************************"
 
 
-
-Unsplash::Photo.search('portrait', page = 1, per_page = 30).each do |picture|
+Unsplash::Photo.search('portrait', page = 1, per_page = 2).each do |picture|
   User.create(
     first_name: Faker::Name.name,
     last_name: Faker::Name.name,
@@ -36,5 +40,61 @@ Unsplash::Photo.search('portrait', page = 1, per_page = 30).each do |picture|
     )
   sleep(0.5)
   puts "Create one user called #{User.last.first_name}"
+  puts "***********************************************************************"
+
 end
 
+
+# seed db with Place Model
+
+puts "Let's create places"
+
+
+party_types = ['Afterwork', 'Diner', 'Before Midnight', 'All Night Long']
+rooms_types = ['Kitchen', 'Sofa', 'Rooftop', 'home diner']
+
+
+
+5.times do
+
+photos = rooms_types.map do |room|
+     {
+      "title": room,
+      "description": Faker::Restaurant.description,
+      "url": Unsplash::Photo.search(room, page = (1..3).to_a.sample, per_page = 30).sample[:urls][:small],
+    }
+end
+
+
+
+place_created = Place.create(
+  party_type: party_types.sample,
+  name: Faker::BossaNova.song,
+  description: Faker::Restaurant.description,
+  guest_capacity: (4..30).to_a.sample,
+  # take an id among the users in db to reference the place
+  user_id: User.all.sample.id,
+  address: Faker::Address.full_address,
+  photos: photos,
+  price: (30..1000).to_a.sample
+  )
+
+  puts place_created.valid?
+
+  puts "A place called '#{place_created.name}' has been created by #{place_created.user.first_name}, with a guest capacity of #{place_created.guest_capacity} and is located in #{place_created.address}"
+  puts "***********************************************************************"
+
+end
+
+puts "30 places have been successfully created ! "
+puts "***********************************************************************"
+puts "\\\\\\"
+
+puts "  /$$$$$$  /$$$$$$$  /$$$$$$$        /$$   /$$ /$$$$$$$$ /$$$$$$$   /$$$$$$  /$$$$$$$$  /$$$$$$
+ /$$__  $$| $$__  $$| $$__  $$      | $$  | $$| $$_____/| $$__  $$ /$$__  $$| $$_____/ /$$__  $$
+| $$  \ $$| $$  \ $$| $$  \ $$      | $$  | $$| $$      | $$  \ $$| $$  \ $$| $$      | $$  \__/
+| $$$$$$$$| $$$$$$$/| $$$$$$$/      | $$$$$$$$| $$$$$   | $$$$$$$/| $$  | $$| $$$$$   |  $$$$$$
+| $$__  $$| $$____/ | $$____/       | $$__  $$| $$__/   | $$__  $$| $$  | $$| $$__/    \____  $$
+| $$  | $$| $$      | $$            | $$  | $$| $$      | $$  \ $$| $$  | $$| $$       /$$  \ $$
+| $$  | $$| $$      | $$            | $$  | $$| $$$$$$$$| $$  | $$|  $$$$$$/| $$$$$$$$|  $$$$$$/
+|__/  |__/|__/      |__/            |__/  |__/|________/|__/  |__/ \______/ |________/ \______/"
