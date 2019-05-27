@@ -20,9 +20,10 @@ require 'unsplash'
 
 puts "Destroying existing users, places & bookings..."
 
-User.destroy_all
-Place.destroy_all
 Booking.destroy_all
+Place.destroy_all
+User.destroy_all
+
 puts "***********************************************************************"
 puts "Let's create users"
 puts "***********************************************************************"
@@ -67,7 +68,7 @@ end
 
 
 
-place_created = Place.create(
+place_created = Place.new(
   party_type: party_types.sample,
   name: Faker::BossaNova.song,
   description: Faker::Restaurant.description,
@@ -79,6 +80,8 @@ place_created = Place.create(
   price: (30..1000).to_a.sample
   )
 
+  place_created.save!
+
   puts place_created.valid?
 
   puts "A place called '#{place_created.name}' has been created by #{place_created.user.first_name}, with a guest capacity of #{place_created.guest_capacity} and is located in #{place_created.address}"
@@ -88,13 +91,25 @@ end
 
 puts "30 places have been successfully created ! "
 puts "***********************************************************************"
-puts "\\\\\\"
 
-puts "  /$$$$$$  /$$$$$$$  /$$$$$$$        /$$   /$$ /$$$$$$$$ /$$$$$$$   /$$$$$$  /$$$$$$$$  /$$$$$$
- /$$__  $$| $$__  $$| $$__  $$      | $$  | $$| $$_____/| $$__  $$ /$$__  $$| $$_____/ /$$__  $$
-| $$  \ $$| $$  \ $$| $$  \ $$      | $$  | $$| $$      | $$  \ $$| $$  \ $$| $$      | $$  \__/
-| $$$$$$$$| $$$$$$$/| $$$$$$$/      | $$$$$$$$| $$$$$   | $$$$$$$/| $$  | $$| $$$$$   |  $$$$$$
-| $$__  $$| $$____/ | $$____/       | $$__  $$| $$__/   | $$__  $$| $$  | $$| $$__/    \____  $$
-| $$  | $$| $$      | $$            | $$  | $$| $$      | $$  \ $$| $$  | $$| $$       /$$  \ $$
-| $$  | $$| $$      | $$            | $$  | $$| $$$$$$$$| $$  | $$|  $$$$$$/| $$$$$$$$|  $$$$$$/
-|__/  |__/|__/      |__/            |__/  |__/|________/|__/  |__/ \______/ |________/ \______/"
+
+# # Seed DB with bookings
+
+# booking_new = Booking.new(
+#   booking_type: party_types.sample,
+#   guests: (4..30).to_a.sample,
+#   date: Faker::Date.forward(23),
+#   user_id: User.all.sample.id
+#   )
+
+
+# puts "\\\\\\"
+
+# puts "  /$$$$$$  /$$$$$$$  /$$$$$$$        /$$   /$$ /$$$$$$$$ /$$$$$$$   /$$$$$$  /$$$$$$$$  /$$$$$$
+#  /$$__  $$| $$__  $$| $$__  $$      | $$  | $$| $$_____/| $$__  $$ /$$__  $$| $$_____/ /$$__  $$
+# | $$  \ $$| $$  \ $$| $$  \ $$      | $$  | $$| $$      | $$  \ $$| $$  \ $$| $$      | $$  \__/
+# | $$$$$$$$| $$$$$$$/| $$$$$$$/      | $$$$$$$$| $$$$$   | $$$$$$$/| $$  | $$| $$$$$   |  $$$$$$
+# | $$__  $$| $$____/ | $$____/       | $$__  $$| $$__/   | $$__  $$| $$  | $$| $$__/    \____  $$
+# | $$  | $$| $$      | $$            | $$  | $$| $$      | $$  \ $$| $$  | $$| $$       /$$  \ $$
+# | $$  | $$| $$      | $$            | $$  | $$| $$$$$$$$| $$  | $$|  $$$$$$/| $$$$$$$$|  $$$$$$/
+# |__/  |__/|__/      |__/            |__/  |__/|________/|__/  |__/ \______/ |________/ \______/"
