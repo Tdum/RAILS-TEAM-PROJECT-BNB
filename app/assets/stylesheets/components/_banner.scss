@@ -3,6 +3,8 @@
   background-position: center;
   padding: 150px 0;
   height: 100vh;
+  position: relative;
+
 }
 
 .banner h1 {
@@ -20,3 +22,12 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
+.location {
+  position: absolute;
+  bottom : 100px;
+  right: 100px
+}
+
+.banner .fas {
+  color: white;
+}
