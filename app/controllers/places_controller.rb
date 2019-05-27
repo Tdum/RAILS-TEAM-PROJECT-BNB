@@ -2,6 +2,7 @@ class PlacesController < ApplicationController
   before_action :place_find, only: [:show, :edit, :update, :destroy]
 
   def index
+    @places = Place.all
   end
 
   def show
