@@ -8,6 +8,8 @@
 
 require 'faker'
 require 'unsplash'
+require 'open-uri'
+require 'nokogiri'
 
 # puts "How many users would you like to create ?"
 # user_number = gets.chomp
@@ -29,7 +31,7 @@ puts "Let's create users"
 puts "***********************************************************************"
 
 
-Unsplash::Photo.search('portrait', page = 1, per_page = 2).each do |picture|
+Unsplash::Photo.search('portrait', page = 1, per_page = 30).each do |picture|
   User.create(
     first_name: Faker::Name.name,
     last_name: Faker::Name.name,
@@ -55,18 +57,27 @@ party_types = ['Afterwork', 'Diner', 'Before Midnight', 'All Night Long']
 rooms_types = ['Kitchen', 'Sofa', 'Rooftop', 'home diner']
 
 
+# addresses scrapping
 
-5.times do
+url = "https://www.bestrestaurantsparis.com/fr/restaurants.html"
 
-photos = rooms_types.map do |room|
-     {
-      "title": room,
-      "description": Faker::Restaurant.description,
-      "url": Unsplash::Photo.search(room, page = (1..3).to_a.sample, per_page = 30).sample[:urls][:small],
-    }
+html_file = open(url).read
+html_doc = Nokogiri::HTML(html_file)
+addresses = []
+
+# scrapping of 30 adresses
+
+html_doc.search('.block-option-restaurant-address').first(30).each do |element|
+  addresses << element.text.strip
+  puts element.text.strip
 end
 
 
+# iteration on the 30 adresses
+
+addresses.each do |address|
+
+party_type = party_types.sample
 
 place_created = Place.new(
   party_type: party_types.sample,
@@ -75,10 +86,11 @@ place_created = Place.new(
   guest_capacity: (4..30).to_a.sample,
   # take an id among the users in db to reference the place
   user_id: User.all.sample.id,
-  address: Faker::Address.full_address,
-  photos: photos,
+  address: address,
+  photo: Unsplash::Photo.search('kitchen', page = (1..3).to_a.sample, per_page = 30).sample[:urls][:small],
   price: (30..1000).to_a.sample
   )
+sleep(0.2)
 
   place_created.save!
 
