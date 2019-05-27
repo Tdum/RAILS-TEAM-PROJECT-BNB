@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+    before_action :place_find, only: [:show, :edit, :update, :destroy]
 
   def index
   end
@@ -23,11 +24,11 @@ class BookingsController < ApplicationController
 
   private
 
-  def place_params
+  def booking_params
     params.require(:booking).permit(:guests, :date, :booking_type)
   end
 
-  def place_find
+  def booking_find
     @booking = Booking.find(params[:id])
   end
 end
