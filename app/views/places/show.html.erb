@@ -1,3 +1,12 @@
 
-
-<h1>show places</h1>
+<div class="container">
+  <div class="row">
+    <div class="photo col-7">
+      <%= cl_image_tag(@place.photo, style:'width:100%;height:auto;') %>
+    </div>
+    <div class="place-desc col-5">
+      <h2><%= @place.address %></h2>
+      <h2></h2>
+    </div>
+  </div>
+</div>
