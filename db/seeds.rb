@@ -47,6 +47,7 @@ puts "***********************************************************************"
 
 # seed db with users
 
+
 Unsplash::Photo.search('portrait', page = 1, per_page = users).each do |picture|
   User.create(
     first_name: Faker::Name.name,
@@ -61,6 +62,16 @@ Unsplash::Photo.search('portrait', page = 1, per_page = users).each do |picture|
   puts "Create one user called #{User.last.first_name}"
   puts
 end
+
+User.create(
+  first_name: 'To',
+  last_name: 'To',
+  email: 'toto@gmail.com',
+  description: Faker::Hipster.paragraphs,
+  password: 'password',
+  # remote_....._url allow to upload on cloudinary
+  remote_photo_url: Unsplash::Photo.search('portrait', page = 1, per_page = users).sample[:urls][:small] # search in Unsplash object urls of small picture
+  )
 
 puts "***********************************************************************"
 puts "Users have been successfully created ! "
