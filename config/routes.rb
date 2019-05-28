@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :places do
-    resources :bookings
+    resources :bookings, except: :index
   end
+
+  get 'bookings', to: 'bookings#index', as: :bookings
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
