@@ -4,6 +4,17 @@
       <h1>Les lieux à louer</h1>
     </div>
   </div>
+<!-- query -->
+
+
+      <div class="ml-auto flex">
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" name="query" type="search" placeholder="Search" aria-label="Search" value="<%= params[:query] %>">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+
+<!--   Results query -->
 
   <div class="row">
     <div class="col">
@@ -11,6 +22,8 @@
     </div>
   </div>
 
+
+<!-- Display cards  -->
   <div class="row">
     <% @places.each do |place| %>
       <div class="col-4">
