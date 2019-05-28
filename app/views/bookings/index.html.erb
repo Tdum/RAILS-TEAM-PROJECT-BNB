@@ -1,0 +1,41 @@
+
+<div class="container">
+ <h1> Votre Historique </h1>
+ <br>
+ <br>
+  <h1>Vos bookings </h1>
+  <br>
+  <br>
+  <% @bookings.last(4).each do |booking| %>
+    <div class="card-trip">
+    <img src="<%= booking.place.photo %>">
+    <div class="card-trip-infos">
+      <div>
+        <h2>Votre prochain <%= booking.place.party_type %> à <%= booking.place.name %></h2>
+        <p>Rendez-vous le: <%= booking.date %></p>
+      </div>
+      <h2 class="card-trip-pricing"><%= booking.place.price %>€ / nuit</h2>
+      <img src='<%= current_user.photo %>' class="card-trip-user avatar-bordered"/>
+    </div>
+    </div>
+  <% end %>
+
+  <br>
+  <br>
+  <h1>Vos Appartements </h1>
+  <br>
+  <br>
+
+  <% current_user.places.each do |place| %>
+    <div class="card-product m-4">
+      <img src="<%= place.photo %>">
+      <div class="card-product-infos">
+        <h2><%= place.name %></h2>
+        <p>Up to <%= place.guest_capacity %> guests.</p>
+        <p><%= place.price %>€ / nuit.</p>
+        <%= link_to "edit", edit_place_path(place), class:"btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
+
+</div>

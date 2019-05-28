@@ -7,30 +7,101 @@
   justify-content: space-between;
 }
 
+.place-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1500px;
+}
+
 .place-card {
   width: 100%;
   position: relative;
   margin: .5rem 0 1rem 0;
   background-color: #fff;
   border-radius: 2px;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+  // box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 }
 
+
 .place-card-image {
-  height: 180px;
+  height: 245px;
   background-position: center;
   background-size: cover;
+  border-radius: 3px;
 }
 
 .place-card-content {
-  padding: 24px;
-  background-color: #F8F9FA;
+  // padding: 24px;
+  background-color: transparent;
+  border : none;
+}
+
+.place-card-title {
+  margin-bottom: 10px;
+}
+.place-card-title h4 {
+  line-height: 16px;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: open sans;
+  color : #767676;
+  margin-bottom: 0px;
+}
+
+.place-card-content p {
+  line-height: 22px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: Raleway;
+  color : #484848;
+  margin-top: -4px;
+
+}
+
+.place-card-content .point {
+  line-height: 16px;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: open sans;
+  color : #767676;
+  padding-top: 8px;
+
+
+}
+
+.place-card-votes .point {
+  line-height: 16px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: raleway;
+  color : #767676;
+  padding-top: 0px;
+
+
+}
+
+.place-card-votes .votes p {
+  // line-height: 16px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: raleway;
+  color : #767676;
+  margin-bottom: 0px;
+}
+
+.hero-level {
+  line-height: 16px;
+  font-size: 12px;
+  font-weight: bolder;
+  font-family: open sans;
+  color : #787878;
+  margin-bottom: 0px;
 }
 
 .place-card-actions {
   position: relative;
   background-color: inherit;
-  border-top: 1px solid rgba(160,160,160,0.2);
+  // border-top: 1px solid rgba(160,160,160,0.2);
   padding: 16px 24px;
 }
 
@@ -44,7 +115,7 @@
   background: #F8F9FA;
   padding: 20px;
   margin-bottom: 20px;
-  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  // box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
   border-radius: 3px;
 }
 

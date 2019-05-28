@@ -1,11 +1,20 @@
 class PlacesController < ApplicationController
-  # before_action :place_find, only: [:show, :edit, :update, :destroy]
+  before_action :place_find, only: [:show, :edit, :update, :destroy]
+
   def index
     if params[:query].present?
       @query = params[:query]
-      @places = Place.where("name i Like '%#{params[:query]}%'")
+      if Place.where.not(latitude: nil, longitude: nil)
+        @places = Place.where("name iLike '%#{params[:query]}%'")
+      end
     else
-      @places = Place.all
+      @places = Place.where.not(latitude: nil, longitude: nil)
+      @markers = @places.map do |place|
+      {
+        lat: place.latitude,
+        lng: place.longitude
+      }
+      end
     end
   end
 
@@ -15,26 +24,25 @@ class PlacesController < ApplicationController
 
   def create
     @place = Place.new(place_params)
-    @place.user_id = current_user.id
+    @place.user = current_user
     if @place.save
-      redirect_to places_path
+      redirect_to place_path(@place)
     else
       render :new
     end
   end
 
   def show
-    @place = Place.find(params[:id])
   end
 
-  # def edit
-  # end
+  def edit
+  end
 
-  # def update
-  # end
+  def update
+  end
 
-  # def destroy
-  # end
+  def destroy
+  end
 
   private
 
@@ -42,7 +50,7 @@ class PlacesController < ApplicationController
     params.require(:place).permit(:address, :party_type, :name, :description, :guest_capacity, :price, :photo, :lattitude, :longitude)
   end
 
-  # def place_find
-  #   @place = Place.find(params[:id])
-  # end
+  def place_find
+    @place = Place.find(params[:id])
+  end
 end
