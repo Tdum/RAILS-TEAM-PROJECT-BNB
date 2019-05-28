@@ -108,7 +108,8 @@ sleep(1)
 # scrapping of 30 adresses
 
 html_doc.search('.block-option-restaurant-address').first(places).each do |element|
-  addresses << element.text.strip.split('-')[0]
+
+  addresses << element.text.strip.split('-')[0] + 'Paris'
   puts element.text.strip
 end
 
