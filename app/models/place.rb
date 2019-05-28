@@ -1,6 +1,6 @@
 class Place < ApplicationRecord
 
-  CATEGORIES = ["Dream views", "loud friendly", "Fashionable", "Hypster", "Home sweet home"]
+  CATEGORIES = ['Afterwork', 'Diner', 'Before Midnight', 'All Night Long']
   belongs_to :user
   has_many :bookings
   validates :name, :address, :description, :guest_capacity, :price, presence: true
