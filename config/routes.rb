@@ -4,10 +4,13 @@ Rails.application.routes.draw do
 
   resources :places do
     resources :bookings, except: :index
+    resources :reviews, only: :create
   end
 
-  get 'bookings', to: 'bookings#index', as: :bookings
 
+  get 'bookings', to: 'bookings#index', as: :bookings
+  # delete "reviews/:id", to: "reviews#destroy"
+  resources :reviews, only: :destroy
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
