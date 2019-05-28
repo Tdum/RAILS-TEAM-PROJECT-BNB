@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :places do
     resources :bookings, except: :index
+    resources :reviews, only: :create
   end
 
   get 'bookings', to: 'bookings#index', as: :bookings

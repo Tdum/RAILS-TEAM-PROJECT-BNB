@@ -18,7 +18,7 @@
       <h2>
         <%= pluralize @place.reviews.size, "review" %>
       </h2>
-
+<!--       review -->
       <div id="reviews">
         <% if @place.reviews.blank? %>
           Soyez le premier à laisser une note sur <%= @place.name %>
@@ -28,6 +28,11 @@
           <% end %>
         <% end %>
       </div>
+
+      <!-- formulaire -->
+
+      <%= render 'reviews/form', place: @place, review: @review %>
+
     </div>
 
     <div class="col-4">
