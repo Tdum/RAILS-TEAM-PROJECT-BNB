@@ -1,7 +1,7 @@
-<div class="container mt-3">
+<div class="place-container mt-3">
   <div class="row">
     <div class="col-12">
-      <h1>Les lieux à louer</h1>
+      <h1>Les lieux insolites à louer pour l'apéro</h1>
     </div>
   </div>
 <!-- query -->
@@ -10,7 +10,7 @@
       <div class="ml-auto flex">
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" name="query" type="search" placeholder="Search" aria-label="Search" value="<%= params[:query] %>">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Chercher</button>
         </form>
       </div>
 
@@ -24,9 +24,10 @@
 
 
 <!-- Display cards  -->
+
   <div class="row">
     <% @places.each do |place| %>
-      <div class="col-4">
+      <div class="col-3 px-2">
         <div class="place-card">
           <div class="place-card-image" style="background-image: url('<%= place.photo %>')"></div>
           <div class="place-card-content">
