@@ -1,1 +1,14 @@
+
 <h1>booking new</h1>
+<div class="container">
+
+    <%= simple_form_for [ @place, @booking ] do |f| %>
+      <%= f.input :guests, collection: 1..100, prompt: "Combien serez-vous?", selected: 10, error: "Veuillez nous indiquer combien vous serez" %>
+      <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
+      <%= f.button :submit, "Book now!", class: "btn btn-primary" %>
+    <% end %>
+
+  </div>
+</div>
+
+  <%#= render 'form', booking: @booking @place %>
