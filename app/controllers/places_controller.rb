@@ -3,7 +3,7 @@ class PlacesController < ApplicationController
   def index
     if params[:query].present?
       @query = params[:query]
-      @places = Place.where("name iLike '%#{params[:query]}%'")
+      @places = Place.where("name i Like '%#{params[:query]}%'")
     else
       @places = Place.all
     end
