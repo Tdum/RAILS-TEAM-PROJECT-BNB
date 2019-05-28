@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-    before_action :place_find, only: [:show, :edit, :update, :destroy]
+    before_action :booking_find, only: [:show, :edit, :update, :destroy]
 
   def index
     @user = current_user
@@ -7,10 +7,10 @@ class BookingsController < ApplicationController
   end
 
   def show
-
   end
 
   def new
+    @Booking = Booking.new
   end
 
   def create
@@ -28,9 +28,16 @@ class BookingsController < ApplicationController
   end
 
   def update
+    if @booking.update
+      redirect_to bookings_path
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @booking.destroy
+    redirect_to bookings_path
   end
 
   private
