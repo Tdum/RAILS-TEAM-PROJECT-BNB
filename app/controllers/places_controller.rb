@@ -1,5 +1,6 @@
 class PlacesController < ApplicationController
-  # before_action :place_find, only: [:show, :edit, :update, :destroy]
+  before_action :place_find, only: [:show, :edit, :update, :destroy]
+
   def index
     if params[:query].present?
       @query = params[:query]
@@ -24,17 +25,16 @@ class PlacesController < ApplicationController
   end
 
   def show
-    @place = Place.find(params[:id])
   end
 
-  # def edit
-  # end
+  def edit
+  end
 
-  # def update
-  # end
+  def update
+  end
 
-  # def destroy
-  # end
+  def destroy
+  end
 
   private
 
@@ -42,7 +42,7 @@ class PlacesController < ApplicationController
     params.require(:place).permit(:address, :party_type, :name, :description, :guest_capacity, :price, :photo, :lattitude, :longitude)
   end
 
-  # def place_find
-  #   @place = Place.find(params[:id])
-  # end
+  def place_find
+    @place = Place.find(params[:id])
+  end
 end
