@@ -1,21 +1,55 @@
-<div class="container">
-  <h2 class="mb-3">App Hero's Around Paris</h2>
-    <div class="row">
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12">
+      <h1>Les lieux à louer</h1>
+    </div>
+  </div>
+<!-- query -->
+
+
+      <div class="ml-auto flex">
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" name="query" type="search" placeholder="Search" aria-label="Search" value="<%= params[:query] %>">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+
+<!--   Results query -->
+
+  <div class="row">
+    <div class="col">
+      <p>Vous avez cherchez <strong><%= @query %></strong>. Nous avons trouvé <%= @places.count %> résultats sur un total de <%= Place.count %> lieux sur notre plateforme.</p>
+    </div>
+  </div>
+
+
+<!-- Display cards  -->
+  <div class="row">
     <% @places.each do |place| %>
-      <div class="col-md-4">
-        <div class="card-place">
-        <!-- <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"> -->
-          <%= link_to place_path(place) do %>
-            <%= cl_image_tag(place.photo, height: 175, crop: :fill, class: "card-img") %>
-          <% end %>
-          <div class="card-place-infos">
-            <h5><%= place.name %></h5>
+      <div class="col-4">
+        <div class="place-card">
+          <div class="place-card-image" style="background-image: url('<%= place.photo %>')"></div>
+          <div class="place-card-content">
+            <div class="place-card-title">
+              <h4><%= place.name %></h4>
+            </div>
+            <p><%= place.address %></p>
+            <div class="flex">
+              <div class="flex">
+                <i class="material-icons mr-2">people</i><span><%= place.guest_capacity %></span>
+              </div>
+              <div class="flex ml-3">
+                <i class="material-icons mr-2">euro_symbol</i> <%= place.price %>
+              </div>
+            </div>
           </div>
-          <h3 class>$ <%= place.price %></h3>
+          <div class="place-card-actions">
+            <%= link_to 'More info', place_path(place) %>
+            <a href="#" class="ml-3 text-warning">Edit</a>
+            <a href="#" class="ml-3 text-danger">Remove</a>
+          </div>
         </div>
       </div>
     <% end %>
   </div>
-
 </div>
-
