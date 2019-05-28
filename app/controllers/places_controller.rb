@@ -2,18 +2,6 @@ class PlacesController < ApplicationController
   before_action :place_find, only: [:show, :edit, :update, :destroy]
 
   def index
-    # @places = Place.all
-    @places = Place.where.not(latitude: nil, longitude: nil)
-
-    @markers = @places.map do |place|
-      {
-        lat: place.latitude,
-        lng: place.longitude
-      }
-    end
-  end
-
-  def show
     if params[:query].present?
       @query = params[:query]
       if Place.where.not(latitude: nil, longitude: nil)
@@ -29,6 +17,24 @@ class PlacesController < ApplicationController
       end
     end
   end
+
+  # def show
+  # if params[:query].present?
+  #     @query = params[:query]
+  #     if Place.where.not(latitude: nil, longitude: nil)
+  #       @places = Place.where("name iLike '%#{params[:query]}%'")
+  #     end
+  #   else
+  #     @places = Place.where.not(latitude: nil, longitude: nil)
+  #     @markers = @places.map do |place|
+  #     {
+  #       lat: place.latitude,
+  #       lng: place.longitude
+  #     }
+  #     end
+  #   end
+
+  # end
 
   def new
     @place = Place.new
