@@ -6,13 +6,22 @@ class PlacesController < ApplicationController
       @query = params[:query]
       if Place.where.not(latitude: nil, longitude: nil)
         @places = Place.where("name iLike '%#{params[:query]}%'")
+        @markers = @places.map do |place|
+      {
+        lat: place.latitude,
+        lng: place.longitude,
+         infoWindow: render_to_string(partial: "infowindow", locals: { place: place })
+      }
+        end
       end
     else
       @places = Place.where.not(latitude: nil, longitude: nil)
       @markers = @places.map do |place|
       {
         lat: place.latitude,
-        lng: place.longitude
+        lng: place.longitude,
+        # infoWindow: render_to_string(partial: "infowindow", locals: { place: place }),
+        # image_url: helpers.asset_url('REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS')
       }
       end
     end
