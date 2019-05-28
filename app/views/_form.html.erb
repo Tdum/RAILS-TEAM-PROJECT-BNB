@@ -1,0 +1,30 @@
+
+<%= simple_form_for(@place) do |f|  %>
+<%= f.input :name, error: "please enter a catchfrase for your flat", placeholder: "Dream flat in Paris" %>
+<%= f.input :address, error: "please give us a valid address", placeholder: "16, rue gaudelet, Paris" %> %>
+<%= f.association :party_type, error: "please select ", placeholder: "Dream flat in Paris" %> %>
+<%= f.input :text %>
+<%= f.input :text %>
+<% end %>
+
+
+
+
+
+<%= f.submit "create you cocktail", redirect_to class: "btn btn-primary" %>
+
+
+
+    t.text "address"
+    t.string "party_type"
+    t.string "name"
+    t.text "description"
+    t.integer "guest_capacity"
+    t.float "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.string "photo"
+    t.float "latitude"
+    t.float "longitude"
+    t.index ["user_id"], name: "index_places_on_user_id"

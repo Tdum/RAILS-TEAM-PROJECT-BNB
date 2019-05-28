@@ -1,1 +1,17 @@
-<h1>places new</h1>
+
+<div class="container">
+
+  <%= simple_form_for (@place) do |f|  %>
+  <%= f.input :name, error: "please give the best summary of your flat ", placeholder: "Dream flat in Paris" %>
+  <%= f.input :description, error: "please describe your flat", placeholder: "Beautyfull house in the middle of..." %>
+  <%= f.input :address, error: "please give us a valid address", placeholder: "16, rue gaudelet, Paris" %>
+  <%= f.input :party_type, collection: Place::CATEGORIES, error: "please select at least 1 choice", placeholder: "Pick from the list" %>
+  <%= f.input :guest_capacity, collection: 1..100, prompt: "Select your age", selected: 20, error: "please pick the amount of guest you are planning to be" %>
+  <%= f.input :price, placeholder: "what would be your price for a night?" %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
+  <%= f.button :submit, "add your Appartment", class: "btn btn-primary" %>
+
+<% end  %>
+
+</div>
