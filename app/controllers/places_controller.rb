@@ -4,9 +4,17 @@ class PlacesController < ApplicationController
   def index
     if params[:query].present?
       @query = params[:query]
-      @places = Place.where("name iLike '%#{params[:query]}%'")
+      if Place.where.not(latitude: nil, longitude: nil)
+        @places = Place.where("name iLike '%#{params[:query]}%'")
+      end
     else
-      @places = Place.all
+      @places = Place.where.not(latitude: nil, longitude: nil)
+      @markers = @places.map do |place|
+      {
+        lat: place.latitude,
+        lng: place.longitude
+      }
+      end
     end
   end
 
