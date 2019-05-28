@@ -126,7 +126,7 @@ place_created = Place.new(
   guest_capacity: (4..30).to_a.sample,
   # take an id among the users in db to reference the place
   user_id: User.all.sample.id,
-  address: address,
+  address: "16 Villa Gaudelet, 75011 Paris",
   remote_photo_url: Unsplash::Photo.search('flat', page = 1, per_page = 30).sample[:urls][:small],
   price: (30..1000).to_a.sample
   )

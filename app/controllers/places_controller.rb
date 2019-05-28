@@ -2,7 +2,17 @@ class PlacesController < ApplicationController
   before_action :place_find, only: [:show, :edit, :update, :destroy]
 
   def index
-    @places = Place.all
+    # @places = Place.all
+    @places = Place.where.not(latitude: nil, longitude: nil)
+
+    @markers = @places.map do |place|
+      {
+        lat: place.latitude,
+        lng: place.longitude
+      }
+    end
+
+
   end
 
   def show
