@@ -1,2 +1,3 @@
 <p><%= review.content %></p>
 <p><%= review.note %></p>
+<%= link_to "Delete", review, method: :delete, remote: true, "data-review-id": review.id %>

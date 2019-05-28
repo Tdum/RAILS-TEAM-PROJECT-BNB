@@ -4,10 +4,25 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.place = @place
     if @review.save
-     redirect_to place_path(@place)
+      respond_to do |format|
+        format.html { redirect_to place_path(@place) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
     else
-     render 'places/show'
+      respond_to do |format|
+        format.html { render 'places/show' }
+        format.js  # <-- idem
+      end
     end
+  end
+
+  def destroy
+      @review = Review.find(params[:id])
+      @review.destroy
+      respond_to do |format|
+        format.html { render 'places/show' }
+        format.js
+      end
   end
 
   private
