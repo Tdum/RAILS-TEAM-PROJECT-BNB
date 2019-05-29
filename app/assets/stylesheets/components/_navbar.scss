@@ -1,11 +1,12 @@
 .navbar-lewagon {
   justify-content: space-between;
   background-color: transparent;
-  position: absolute;
+  // position: absolute;
   top: 0;
   right: 0;
   left: 0;
   z-index: 1030;
+  padding: 32px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -13,5 +14,5 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 65px;
 }
