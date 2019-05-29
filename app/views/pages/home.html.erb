@@ -1,11 +1,61 @@
-<div class="banner position-sticky" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dpnte3nr8/image/upload/v1558966768/austin-distel-1555610-unsplash_ne1asc.jpg);">
+<!-- <div class="banner position-sticky" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dpnte3nr8/image/upload/v1558966768/austin-distel-1555610-unsplash_ne1asc.jpg);"> -->
+
+<!--   <video playsinline autoplay muted loop> -->
+  <script type="text/javascript">
+
+  var websites = ['https://v.ftcdn.net/01/94/29/41/700_F_194294173_xBKpbwDJ91ekEkCC2PTkbkr2KtQWacaN_ST.mp4', 'https://v.ftcdn.net/01/16/28/37/700_F_116283741_EfYkiZQc4An9dOMs7ZfcCTAZlcriA5yF_ST.mp4']
+
+var i=0;
+
+function slide(){
+ document.getElementById("target-source").src= websites[i].src;
+ i++;
+ if(i==websites.length){
+  i=0;
+ }
+ setTimeout(function(){ slide(); },2000);
+}
+
+</script>
+
+<div class="cover_me">
   <div class="container">
+
+      <div class="overlay"></div>
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+      <source id="target-source" src="https://v.ftcdn.net/01/04/96/48/700_F_104964807_BdVT8FsfUHakibMCPDVtDVFPnnndzZ80_ST.mp4" type="video/mp4">
+    </video>
+
+      <div class="d-flex h-100 text-center align-items-center">
+        <div class="w-100 text-white">
+          <div class="overlay-content">
+            <h1>Prenez l'Apéro dans des appartements insolites</h1>
+            <p>Afterwork - Dîner - Soirée Foot - All Over The Night</p>
+            <%= link_to "découvrir les lieux", places_path, class:"btn btn-light" %>
+          </div>
+          <div class="location">
+            <p><i class="fas fa-compass"></i> Villa Gaudelet, Paris 11ème</p>
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+<!--
+<div class="video-container">
+  <video autoplay muted loop>
+    <source src="https://v.ftcdn.net/01/04/96/48/700_F_104964807_BdVT8FsfUHakibMCPDVtDVFPnnndzZ80_ST.mp4" type="video/mp4">
+  </video>
+  <div class="overlay-content">
     <h1>Prenez l'Apéro dans des appartements insolites</h1>
     <p>Afterwork - Dîner - Soirée Foot - All Over The Night</p>
     <%= link_to "découvrir les lieux", places_path, class:"btn btn-light" %>
   </div>
+
   <div class="location">
     <p><i class="fas fa-compass"></i> Villa Gaudelet, Paris 11ème</p>
   </div>
 </div>
 
+</div>
+ -->
