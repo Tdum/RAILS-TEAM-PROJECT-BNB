@@ -1,6 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "apphero.jpg" , class: "rounded ml-4" %>
+    <%#= image_tag "apphero.jpg" , class: "rounded ml-4" %>
+    <%= cl_image_tag("logo_o3y0bv", :transformation => { :width => 40 })%>
     <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,7 +19,7 @@
           <%#= link_to "Vos appartements", bookings_path, class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
-          <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle mr-4", id: "navbarDropdown", data: { toggle: "dropdown" }, :transformation=>[{:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},{:width=>200, :crop=>"scale"}], 'aria-haspopup': true, 'aria-expanded': false %>
+          <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle mr-4", id: "navbarDropdown", data: { toggle: "dropdown" }, :transformation=>[{:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},{:width=>200, :crop=>"scale"}], :border => { :width => 2, :color => 'white' },'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Vos appartements", bookings_path, class: "dropdown-item" %>
             <%= link_to "Vos réservations", bookings_path, class: "dropdown-item" %>
