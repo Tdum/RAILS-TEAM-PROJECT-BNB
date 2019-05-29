@@ -80,6 +80,10 @@
 
 }
 
+.superapero p{
+  color: blue;
+}
+
 .place-card-votes .votes p {
   // line-height: 16px;
   font-size: 12px;
@@ -136,4 +140,10 @@
   font-weight: 300;
   font-size: 20px;
   color: #333;
+}
+
+.result-query p {
+  font-family: Open sans;
+  font-weight: 400;
+  color: #454545;
 }
