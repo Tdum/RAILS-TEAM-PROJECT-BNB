@@ -1,0 +1,158 @@
+
+.homepage-content {
+  // background-size: cover;
+  // background-position: center;
+  width:  441px;
+  background: #ffffff !important;
+  border-radius: 4px !important;
+  padding: 32px !important;
+  padding-bottom: 32px !important;
+  width: 441px !important;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.25) !important;
+}
+
+.homepage-content-title h1 {
+  font-size: 30px;
+  line-height: 36px;
+  color: #484848;
+  font-family: Raleway;
+  font-weight: 700;
+}
+
+// .homepage-content p {
+//   font-family: raleway;
+//   font-weight: 400;
+//   font-size: 20px;
+//   color: white;
+//   opacity: .7;
+//   margin-bottom: 32px;
+// }
+
+.homepage-content-container {
+  padding-top: 10%;
+  padding-left: 10%;
+}
+
+#title-card-home h4 {
+line-height: 16px;
+font-size: 12px;
+font-weight: 700;
+font-family: open sans;
+color : #767676;
+margin-bottom: 24px;
+}
+
+
+#avis-home {
+  font-size: 22px;
+  line-height: 32px;
+  font-weight: 400;
+  font-family: raleway;
+  color : #767676;
+  margin-bottom: 0px;
+}
+
+#cta a{
+  border : none;
+  background-color: #182e66;
+  color: white;
+  padding: 10px 22px;
+  border-radius: 2px;
+  font-weight: 700;
+  // margin-top: 24px;
+  font-family: open sans;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+#cta button{
+  border : none;
+  background-color: #182e66;
+  color: white;
+  padding: 10px 22px;
+  border-radius: 2px;
+  font-weight: 700;
+  // margin-top: 24px;
+  font-family: open sans;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+
+
+
+
+#cta-home a:hover {
+  text-decoration: none;
+  background-color: #274AA4;
+
+}
+// .homepage-content a {
+//   border : none;
+//   background-color: white;
+//   color: #484848;
+//   padding: 10px 22px;
+//   border-radius: 2px;
+//   font-weight: 700;
+//   margin-top: 24px;
+//   font-family: open sans;
+
+// }
+
+// .homepage-content a:hover {
+//   text-decoration: none;
+// }
+
+
+
+// slider
+
+.ms-slider {
+  display: inline-block;
+
+  height: 1.5em;
+  overflow: hidden;
+
+  vertical-align: middle;
+
+  mask-image: linear-gradient(transparent, white, white, white, transparent);
+  mask-type: luminance;
+  mask-mode: alpha;
+
+  &__words {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    animation-name: wordSlider;
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite;
+    animation-duration: 7s;
+  }
+
+  &__word {
+    display: block;
+    line-height: 1.3em;
+    text-align: left;
+  }
+}
+
+@keyframes wordSlider {
+  $steps: -0%, -25%, -50%, -75%;
+
+  @for $index from 0 to length($steps)-1 {
+    $next: $index+1;
+    $step: floor(100/(length($steps)-1));
+    $animation_step: floor($step*.2);
+
+    #{$step*$index}%,
+    #{($step*$next) - $animation_step}% {
+      transform: translateY(nth($steps, $index+1));
+    }
+  }
+  100% {
+    transform: translateY(nth($steps, length($steps)));
+  }
+}
