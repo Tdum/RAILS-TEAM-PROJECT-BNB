@@ -16,7 +16,7 @@
   <!--   Results query -->
 
   <div class="row mt-3">
-    <div class="col">
+    <div class="col result-query">
       <p>Vous avez cherchez <strong><%= params[:query] %></strong>. Nous avons trouvé <strong><%= @places.count %></strong> résultats sur un total de <strong><%= Place.count %></strong> lieux sur notre plateforme.</p>
     </div>
   </div>
@@ -42,7 +42,7 @@
             <%= render 'shared/stars' %>
             <div class="votes pl-1 d-flex justify-content-start">
               <p>110</p>
-              <span class="point px-1 pb-2"> · </span>
+              <span class="point superapero px-1 pb-2"> · </span>
               <p>SuperApéro</p>
             </div>
               <!-- <div class="d-flex">
@@ -78,7 +78,7 @@
               <%= render 'shared/stars' %>
               <div class="votes pl-1 d-flex justify-content-start">
                 <p>110</p>
-                <span class="point px-1 pb-2"> · </span>
+                <span class="point superapero px-1 pb-2"> · </span>
                 <p>SuperApéro</p>
               </div>
               <!-- <div class="d-flex">
@@ -140,9 +140,9 @@
               <p class="mb-0"><%= place.name %></p>
               <div class="place-card-votes d-flex justify-content-start pt-1">
                 <%= render 'shared/stars' %>
-                <div class="votes pl-1 d-flex justify-content-start">
+                <div class="votes superapero pl-1 d-flex justify-content-start">
                   <p>110</p>
-                  <span class="point px-1 pb-2"> · </span>
+                  <span class="point  px-1 pb-2"> · </span>
                   <p>SuperApéro</p>
                 </div>
                 <!-- <div class="d-flex">
