@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
     <title>Enjoy your evening drinks in the top flats in the world  </title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= stylesheet_pack_tag 'application', media: 'all' %>
+      <%= include_gon %>
   </head>
   <body>
     <%= render 'shared/navbar' %>
@@ -18,8 +20,11 @@
     <%= render 'shared/flashes' %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+
     <% if params[:action] != "home" %>
     <%= render 'shared/footer'  %>
     <% end %>
+
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
   </body>
 </html>
