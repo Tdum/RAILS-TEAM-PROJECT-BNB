@@ -1,8 +1,14 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to root_path, class: "navbar-brand" do %>
     <%#= image_tag "apphero.jpg" , class: "rounded ml-4" %>
+    <% if params[:action] == "home" || params[:action] == "show" %>
     <%= cl_image_tag("logo_o3y0bv", :transformation => { :width => 40 })%>
+    <% else %>
+    <%= cl_image_tag("logo-black_e6zwdk", :transformation => { :width => 40 })%>
     <% end %>
+    <% end %>
+
+
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
