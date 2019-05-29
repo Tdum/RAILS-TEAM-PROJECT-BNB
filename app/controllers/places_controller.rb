@@ -28,6 +28,7 @@ class PlacesController < ApplicationController
   end
 
   def show
+  gon.dates = @place.bookings.map { |booking| booking.date.to_s }
   @review = Review.new
   @booking = Booking.new
     # if Place.where.not(latitude: nil, longitude: nil)

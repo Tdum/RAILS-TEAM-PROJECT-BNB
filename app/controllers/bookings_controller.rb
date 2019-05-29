@@ -16,7 +16,7 @@ class BookingsController < ApplicationController
     @place = Place.find(params[:place_id])
     @booking.place = @place
     @booking.user = current_user
-    @booking.date = Date.parse(params[:booking][:date])
+    # @booking.date = Date.parse(params[:booking][:date])
     if @booking.save
       redirect_to bookings_path
     else
@@ -43,6 +43,10 @@ class BookingsController < ApplicationController
     redirect_to bookings_path
   end
 
+def confirmation
+@booking = Booking.find(params[:booking_id])
+end
+
   private
 
   def booking_params
@@ -50,6 +54,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_find
-    @booking = Booking.find(params[:id])
+    @booking = Booking.find(params[:booking_id])
   end
 end

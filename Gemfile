@@ -32,6 +32,9 @@ gem 'unsplash'
 # geocoding
 gem 'geocoder'
 
+#datepicker
+gem 'gon', '~> 6.2'
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
