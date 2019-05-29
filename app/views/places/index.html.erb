@@ -85,6 +85,7 @@
     <div class="row">
       <% @places[8..@places.length].each do |place| %>
         <div class="col-3 px-2">
+          <%= link_to place_path(place), class: "place-card-link" do %>
           <div class="place-card">
             <div class="place-card-image" style="background-image: url('<%= place.photo %>')"></div>
             <div class="place-card-content pt-2">
@@ -117,8 +118,9 @@
               <a href="#" class="ml-3 text-danger">Remove</a>
             </div> -->
           </div>
-        </div>
       <% end %>
+        </div>
+  <% end %>
     </div>
   </div>
     <!-- map -->
