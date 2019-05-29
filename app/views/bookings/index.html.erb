@@ -18,6 +18,7 @@
       <img src='<%= current_user.photo %>' class="card-trip-user avatar-bordered"/>
     </div>
     </div>
+    <%= link_to "Delete", booking_path(booking), method: :delete %>
   <% end %>
 
   <br>

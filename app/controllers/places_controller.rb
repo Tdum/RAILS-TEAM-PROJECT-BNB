@@ -1,6 +1,8 @@
 class PlacesController < ApplicationController
   before_action :place_find, only: [:show, :edit, :update, :destroy]
 
+  DATES = []
+
   def index
     if params[:query].present?
       @query = params[:query]
