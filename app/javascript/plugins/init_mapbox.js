@@ -28,6 +28,7 @@ const initMapbox = () => {
 
     const map = new mapboxgl.Map({
       container: 'map',
+      
       // style: 'mapbox://styles/mapbox/streets-v11'
       style: 'mapbox://styles/mapbox/satellite-streets-v10'
       // style: 'mapbox://styles/mapbox/light-v9'
