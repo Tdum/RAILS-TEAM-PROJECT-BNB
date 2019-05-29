@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-    before_action :booking_find, only: [:show, :edit, :update, :destroy]
+    before_action :booking_find, only: [:show, :edit, :update ]
 
   def index
     @user = current_user
@@ -39,6 +39,7 @@ class BookingsController < ApplicationController
   end
 
   def destroy
+    @booking = Booking.find(params[:id])
     @booking.destroy
     redirect_to bookings_path
   end
