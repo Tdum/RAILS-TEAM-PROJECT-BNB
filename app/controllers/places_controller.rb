@@ -32,11 +32,10 @@ class PlacesController < ApplicationController
     # if Place.where.not(latitude: nil, longitude: nil)
 
       # @place = Place.where.not(latitude: nil, longitude: nil)
-    @markers =
-    {
+    @markers = [{
       lat: @place.latitude,
       lng: @place.longitude,
-    }
+    }]
   end
 
   # end
