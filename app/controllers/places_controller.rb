@@ -29,6 +29,7 @@ class PlacesController < ApplicationController
 
   def show
   @review = Review.new
+  @booking = Booking.new
     # if Place.where.not(latitude: nil, longitude: nil)
 
       # @place = Place.where.not(latitude: nil, longitude: nil)
