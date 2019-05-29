@@ -25,6 +25,7 @@
   <div class="row">
     <% @places.first(8).each do |place| %>
       <div class="col-3 px-2">
+    <%= link_to place_path(place) do %>
         <div class="place-card">
           <div class="place-card-image" style="background-image: url('<%= place.photo %>')"></div>
           <div class="place-card-content pt-2">
@@ -54,6 +55,7 @@
         </div>
       </div>
     <% end %>
+  <% end %>
   </div>
 
   <div
