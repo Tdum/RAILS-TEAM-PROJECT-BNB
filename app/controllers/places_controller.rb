@@ -28,23 +28,18 @@ class PlacesController < ApplicationController
   end
 
   def show
-      @review = Review.new
-  if params[:query].present?
-      @query = params[:query]
-      if Place.where.not(latitude: nil, longitude: nil)
-        @places = Place.where("name iLike '%#{params[:query]}%'")
-      end
-    else
-      @places = Place.where.not(latitude: nil, longitude: nil)
-      @markers = @places.map do |place|
-      {
-        lat: place.latitude,
-        lng: place.longitude
-      }
-      end
-    end
+  @review = Review.new
+    # if Place.where.not(latitude: nil, longitude: nil)
 
+      # @place = Place.where.not(latitude: nil, longitude: nil)
+    @markers =
+    {
+      lat: @place.latitude,
+      lng: @place.longitude,
+    }
   end
+
+  # end
 
   def new
     @place = Place.new

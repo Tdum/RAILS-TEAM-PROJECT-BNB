@@ -36,6 +36,7 @@ const initMapbox = () => {
     });
 
     map.addControl(new mapboxgl.NavigationControl());
+    map.scrollZoom.disable();
 
     const markers = JSON.parse(mapElement.dataset.markers);
     fitMapToMarkers(map, markers);
