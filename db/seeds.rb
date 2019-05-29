@@ -127,8 +127,8 @@ place_created = Place.new(
   # take an id among the users in db to reference the place
   user_id: User.all.sample.id,
   address: address,
-  remote_photo_url: Unsplash::Photo.search('home or living room or dining room', page = 1, per_page = 30).sample[:urls][:regular],
-  price: (30..1000).to_a.sample
+  remote_photo_url: Unsplash::Photo.search('home or living room or dining room', page = 1, per_page = 30).sample[:urls][:full],
+  price: (30..200).to_a.sample
   )
 sleep(0.5)
 
