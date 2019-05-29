@@ -18,7 +18,7 @@
       <img src='<%= current_user.photo %>' class="card-trip-user avatar-bordered"/>
     </div>
     </div>
-    <%= link_to "Delete", booking_path(booking), method: :delete %>
+    <%= link_to "Delete", booking_path(booking), method: :delete, class:"btn btn-outline-danger m-4" %>
   <% end %>
 
   <br>
@@ -34,9 +34,9 @@
         <h2><%= place.name %></h2>
         <p>Up to <%= place.guest_capacity %> guests.</p>
         <p><%= place.price %>€ / nuit.</p>
-        <%= link_to "edit", edit_place_path(place), class:"btn btn-success" %>
+        <%= link_to "edit", edit_place_path(place), class:"btn btn-outline-warning-success" %>
       </div>
     </div>
   <% end %>
-<%= link_to "add an appartement", new_place_path, class:"btn btn-success" %>
+<%= link_to "add an appartement", new_place_path, class:"btn btn-outline-warning m-4" %>
 </div>
