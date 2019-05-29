@@ -1,8 +1,5 @@
 <div class="place-container mt-3">
-
   <!-- query -->
-
-
   <div class="ml-auto flex">
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" name="query" type="search" placeholder="Search" aria-label="Search" value="<%= params[:query] %>">
@@ -11,19 +8,21 @@
       </div>
     </form>
   </div>
-
-
-  <!--   Results query -->
-
+  <!--Results query -->
   <div class="row mt-3">
     <div class="col">
-      <p>Vous avez cherchez <strong><%= params[:query] %></strong>. Nous avons trouvé <strong><%= @places.count %></strong> résultats sur un total de <strong><%= Place.count %></strong> lieux sur notre plateforme.</p>
+      <p>
+        Vous avez cherchez
+        <strong><%= params[:query] %></strong>
+        . Nous avons trouvé
+        <strong><%= @places.count %></strong>
+        résultats sur un total de
+        <strong><%= Place.count %></strong>
+        lieux sur notre plateforme.
+      </p>
     </div>
   </div>
-
-
   <!-- Display cards  -->
-
   <% if  @places.count <= 8 %>
   <div class="row">
     <% @places.each do |place| %>
@@ -37,34 +36,119 @@
             <span class="point px-1 pb-2"> · </span>
             <h4>PARIS 11</h4>
           </div>
-          <p class="mb-0"><%= place.name %></p>
+          <p class="mb-0">
+            <%= place.name %>
+          </p>
           <div class="place-card-votes d-flex justify-content-start pt-1">
             <%= render 'shared/stars' %>
             <div class="votes pl-1 d-flex justify-content-start">
-              <p>110</p>
+              <p>
+                110
+              </p>
               <span class="point px-1 pb-2"> · </span>
-              <p>SuperApéro</p>
+              <p>
+                SuperApéro
+              </p>
             </div>
-              <!-- <div class="d-flex">
+            <!--
+            <div class="d-flex">
+              <div class="d-flex">
+                <i class="material-icons mr-2">people</i>
+                <span><%= place.guest_capacity %></span>
+              </div>
+              <div class="flex ml-3">
+                <i class="material-icons mr-2">euro_symbol</i>
+                <%= place.price %>
+              </div>
+            </div>
+          -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <% end %>
+</div>
+<% else  %>
+<div class="row">
+  <% @places.first(8).each do |place| %>
+  <div class="col-3 px-2">
+    <%= link_to place_path(place) do %>
+    <div class="place-card">
+      <div class="place-card-image" style="background-image: url('<%= place.photo %>')"></div>
+      <div class="place-card-content pt-2">
+        <div class="place-card-title d-flex align-items-center mb-0 pb-0">
+          <h4><%= place.name.upcase %></h4>
+          <span class="point px-1 pb-2"> · </span>
+          <h4>PARIS 11</h4>
+        </div>
+        <p class="mb-0">
+          <%= place.name %>
+        </p>
+        <div class="place-card-votes d-flex justify-content-start pt-1">
+          <%= render 'shared/stars' %>
+          <div class="votes pl-1 d-flex justify-content-start">
+            <p>
+              110
+            </p>
+            <span class="point px-1 pb-2"> · </span>
+            <h4>PARIS 11</h4>
+          </div>
+          <p class="mb-0">
+            <%= place.name %>
+          </p>
+          <div class="place-card-votes d-flex justify-content-start pt-1">
+            <%= render 'shared/stars' %>
+            <div class="votes pl-1 d-flex justify-content-start">
+              <p>
+                110
+              </p>
+              <span class="point px-1 pb-2"> · </span>
+              <p>
+                SuperApéro
+              </p>
+            </div>
+              <!--
+              <div class="d-flex">
                 <div class="d-flex">
-                  <i class="material-icons mr-2">people</i><span><%= place.guest_capacity %></span>
+                  <i class="material-icons mr-2">people</i>
+                  <span><%= place.guest_capacity %></span>
                 </div>
                 <div class="flex ml-3">
-                  <i class="material-icons mr-2">euro_symbol</i> <%= place.price %>
+                  <i class="material-icons mr-2">euro_symbol</i>
+                  <%= place.price %>
                 </div>
-              </div> -->
-            </div>
+              </div>
+            -->
           </div>
         </div>
       </div>
       <% end %>
       <% end %>
     </div>
-    <% else  %>
+  </div>
+  <% end %>
+  <divid="map"style="width: 100%;height: 600px;position: relative"data-markers="<%= @markers.to_json %>"data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  <!-- our selection -->
+  <div class=" mt-3 mb-3">
+    <div class="row px-2">
+      <div class="banner-index col-12" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dpnte3nr8/image/upload/q_auto/v1559044107/adam-wilson-138927-unsplash_v5hjyn.jpg);">
+        <div class="banner-index-container">
+          <h1>Retrouvez la sélection de l'équipe</h1>
+          <p>
+            Des lieux testés et approuvés, pour passer les meilleurs apéros de votre vie de parisien.
+          </p>
+          <a href="#">Commencer</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--others places -->
+  <div class=" mt-3">
     <div class="row">
-      <% @places.first(8).each do |place| %>
+      <% @places[8..@places.length].each do |place| %>
       <div class="col-3 px-2">
-        <%= link_to place_path(place) do %>
+        <%= link_to place_path(place), class: "place-card-link" do %>
         <div class="place-card">
           <div class="place-card-image" style="background-image: url('<%= place.photo %>')"></div>
           <div class="place-card-content pt-2">
@@ -73,127 +157,53 @@
               <span class="point px-1 pb-2"> · </span>
               <h4>PARIS 11</h4>
             </div>
-            <p class="mb-0"><%= place.name %></p>
+            <p class="mb-0">
+              <%= place.name %>
+            </p>
             <div class="place-card-votes d-flex justify-content-start pt-1">
               <%= render 'shared/stars' %>
               <div class="votes pl-1 d-flex justify-content-start">
-                <p>110</p>
-
+                <p>
+                  110
+                </p>
                 <span class="point px-1 pb-2"> · </span>
-                <h4>PARIS 11</h4>
+                <p>
+                  SuperApéro
+                </p>
               </div>
-              <p class="mb-0"><%= place.name %></p>
-              <div class="place-card-votes d-flex justify-content-start pt-1">
-                <%= render 'shared/stars' %>
-                <div class="votes pl-1 d-flex justify-content-start">
-                  <p>110</p>
-                  <span class="point px-1 pb-2"> · </span>
-                  <p>SuperApéro</p>
-                </div>
-                <!-- <div class="d-flex">
+                <!--
+                <div class="d-flex">
                   <div class="d-flex">
-                    <i class="material-icons mr-2">people</i><span><%= place.guest_capacity %></span>
+                    <i class="material-icons mr-2">people</i>
+                    <span><%= place.guest_capacity %></span>
                   </div>
                   <div class="flex ml-3">
-                    <i class="material-icons mr-2">euro_symbol</i> <%= place.price %>
+                    <i class="material-icons mr-2">euro_symbol</i>
+                    <%= place.price %>
                   </div>
-                </div> -->
-              </div>
-            </div>
-          </div>
-        <% end %>
-        <% end %>
-      </div>
-
-
-    </div>
-    <% end %>
-    <div
-
-    id="map"
-    style="width: 100%;
-    height: 600px;
-    position: relative"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-
-    ></div>
-
-
-
-    <!-- our selection -->
-
-    <div class=" mt-3 mb-3">
-      <div class="row px-2">
-        <div class="banner-index col-12" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dpnte3nr8/image/upload/q_auto/v1559044107/adam-wilson-138927-unsplash_v5hjyn.jpg);">
-          <div class="banner-index-container">
-            <h1>Retrouvez la sélection de l'équipe</h1>
-            <p>Des lieux testés et approuvés, pour passer les meilleurs apéros de votre vie de parisien.</p>
-            <a href="#">Commencer</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <!--   others places -->
-
-
-    <div class=" mt-3">
-      <div class="row">
-        <% @places[8..@places.length].each do |place| %>
-        <div class="col-3 px-2">
-          <%= link_to place_path(place), class: "place-card-link" do %>
-          <div class="place-card">
-            <div class="place-card-image" style="background-image: url('<%= place.photo %>')"></div>
-            <div class="place-card-content pt-2">
-              <div class="place-card-title d-flex align-items-center mb-0 pb-0">
-                <h4><%= place.name.upcase %></h4>
-                <span class="point px-1 pb-2"> · </span>
-                <h4>PARIS 11</h4>
-              </div>
-              <p class="mb-0"><%= place.name %></p>
-              <div class="place-card-votes d-flex justify-content-start pt-1">
-                <%= render 'shared/stars' %>
-                <div class="votes pl-1 d-flex justify-content-start">
-                  <p>110</p>
-                  <span class="point px-1 pb-2"> · </span>
-                  <p>SuperApéro</p>
                 </div>
-                <!-- <div class="d-flex">
-                  <div class="d-flex">
-                    <i class="material-icons mr-2">people</i><span><%= place.guest_capacity %></span>
-                  </div>
-                  <div class="flex ml-3">
-                    <i class="material-icons mr-2">euro_symbol</i> <%= place.price %>
-                  </div>
-                </div> -->
-              </div>
+              -->
             </div>
-  <!--           <div class="place-card-actions">
+          </div>
+            <!--
+            <div class="place-card-actions">
               <%= link_to 'More info', place_path(place) %>
               <a href="#" class="ml-3 text-warning">Edit</a>
               <a href="#" class="ml-3 text-danger">Remove</a>
-            </div> -->
-          </div>
+            </div>
+          -->
         </div>
-        <% end %>
       </div>
-
+      <% end %>
     </div>
-    <!-- map -->
-    <<!-- div class="row">
-      <div
-        id="map"
-        style="width: 100%;
-        height: 600px;"
-        data-markers="<%= @markers.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-        ></div> -->
-      </div>
-    </div>
-
-    <% end %>
-
-
   </div>
+  <!-- map -->
+  <
+    <!-- div class="row">
+    <divid="map"style="width: 100%;height: 600px;"data-markers="<%= @markers.to_json %>"data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  -->
+
+</div>
+<% end %>
+</div>
+</div>
