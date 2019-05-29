@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to root_path, class: "navbar-brand" do %>
     <%#= image_tag "apphero.jpg" , class: "rounded ml-4" %>
-    <% if params[:action] == "home" || params[:action] == "show" %>
+    <% if params[:action] == "home" %>
     <%= cl_image_tag("logo-pilou-white_ezn2gi", :transformation => { :width => 55 })%>
     <% else %>
     <%= cl_image_tag("logo-pilou-blue_xwxgcy", :transformation => { :width => 55 })%>

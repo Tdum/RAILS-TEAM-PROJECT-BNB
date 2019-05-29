@@ -20,42 +20,13 @@
         ></div>
       </div>
 
-<!--       test ajax -->
-      <h2>
-        <%= pluralize @place.reviews.size, "review" %>
-      </h2>
-<!--       review -->
-      <div id="reviews">
-        <% if @place.reviews.blank? %>
-          Soyez le premier à laisser une note sur <%= @place.name %>
-        <% else %>
-          <% @place.reviews.each do |review| %>
-            <%= render 'reviews/show', review: review %>
-          <% end %>
-        <% end %>
-      </div>
-
-      <!-- formulaire -->
-
-      <%= render 'reviews/form', place: @place, review: @review %>
-
     </div>
 
     <div class="col-4">
       <div class="place-show-card">
         <h5>Book this Place!</h5>
         <%= render 'bookings/form', place: @place, booking: @booking %>
-          <!-- <form action="">
-            <div class="input-group">
-              <span class="input-group-addon" id="basic-addon1">From:</span>
-              <input type="text" class="form-control" placeholder="12/10/2017" aria-label="Username" aria-describedby="basic-addon1">
-            </div>
-            <div class="input-group mt-2">
-              <span class="input-group-addon" id="basic-addon1">To:</span>
-              <input type="text" class="form-control" placeholder="18/10/2017" aria-label="Username" aria-describedby="basic-addon1">
-            </div>
-            <input type="submit" value="Book" class="btn btn-success mt-2" style="width: 100%">
-          </form> -->
+
       </div>
       <div class="place-show-card">
         <h3>Details</h3>
@@ -68,6 +39,32 @@
           </div>
         </div>
       </div>
+
+      <div class="place-show-card">
+
+          <!--       test ajax -->
+                <h4>
+                  <%= pluralize @place.reviews.size, "review" %>
+                </h4>
+          <!--       review -->
+
+                <div id="reviews">
+                  <% if @place.reviews.blank? %>
+                    Soyez le premier à laisser une note sur <%= @place.name %>
+                  <% else %>
+                    <% @place.reviews.each do |review| %>
+                      <%= render 'reviews/show', review: review %>
+                    <% end %>
+                  <% end %>
+                </div>
+
+                <!-- formulaire -->
+
+                <%= render 'reviews/form', place: @place, review: @review %>
+
+      </div>
+
+
       <div class="place-show-card">
         <div class="flex-align">
           <h6 class="no-mb">Share</h6>
