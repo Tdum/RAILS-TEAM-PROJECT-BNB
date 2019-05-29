@@ -2,6 +2,7 @@ class PlacesController < ApplicationController
   before_action :place_find, only: [:show, :edit, :update, :destroy]
 
   def index
+    @map_flag = 'index'
     if params[:query].present?
       @query = params[:query]
       if Place.where.not(latitude: nil, longitude: nil)
@@ -28,6 +29,7 @@ class PlacesController < ApplicationController
   end
 
   def show
+    @map_flag = 'show'
   gon.dates = @place.bookings.map { |booking| booking.date.to_s }
   @review = Review.new
   @booking = Booking.new
@@ -37,6 +39,7 @@ class PlacesController < ApplicationController
     @markers = [{
       lat: @place.latitude,
       lng: @place.longitude,
+      infoWindow: render_to_string(partial: "infowindow", locals: { place: @place }),
     }]
   end
 

@@ -33,8 +33,8 @@ gem 'unsplash'
 gem 'geocoder'
 
 
-# animation typo
-gem "typedjs-rails", "~> 2.0.9"
+# # animation typo
+# gem "typedjs-rails", "~> 2.0.9"
 #datepicker
 gem 'gon', '~> 6.2'
 
