@@ -78,32 +78,44 @@
               <%= render 'shared/stars' %>
               <div class="votes pl-1 d-flex justify-content-start">
                 <p>110</p>
+
                 <span class="point px-1 pb-2"> · </span>
-                <p>SuperApéro</p>
+                <h4>PARIS 11</h4>
               </div>
-              <!-- <div class="d-flex">
-                <div class="d-flex">
-                  <i class="material-icons mr-2">people</i><span><%= place.guest_capacity %></span>
+              <p class="mb-0"><%= place.name %></p>
+              <div class="place-card-votes d-flex justify-content-start pt-1">
+                <%= render 'shared/stars' %>
+                <div class="votes pl-1 d-flex justify-content-start">
+                  <p>110</p>
+                  <span class="point px-1 pb-2"> · </span>
+                  <p>SuperApéro</p>
                 </div>
-                <div class="flex ml-3">
-                  <i class="material-icons mr-2">euro_symbol</i> <%= place.price %>
-                </div>
-              </div> -->
+                <!-- <div class="d-flex">
+                  <div class="d-flex">
+                    <i class="material-icons mr-2">people</i><span><%= place.guest_capacity %></span>
+                  </div>
+                  <div class="flex ml-3">
+                    <i class="material-icons mr-2">euro_symbol</i> <%= place.price %>
+                  </div>
+                </div> -->
+              </div>
             </div>
           </div>
-        </div>
+        <% end %>
       </div>
       <% end %>
       <% end %>
     </div>
     <div
+
     id="map"
     style="width: 100%;
-    height: 600px;"
+    height: 600px;
+    position: relative"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-    ></div>
 
+    ></div>
 
 
 
@@ -129,6 +141,7 @@
       <div class="row">
         <% @places[8..@places.length].each do |place| %>
         <div class="col-3 px-2">
+          <%= link_to place_path(place), class: "place-card-link" do %>
           <div class="place-card">
             <div class="place-card-image" style="background-image: url('<%= place.photo %>')"></div>
             <div class="place-card-content pt-2">
@@ -164,6 +177,7 @@
         </div>
         <% end %>
       </div>
+
     </div>
     <!-- map -->
     <<!-- div class="row">
